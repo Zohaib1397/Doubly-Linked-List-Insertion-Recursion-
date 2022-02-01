@@ -32,6 +32,17 @@ public:
 	Node* insertAtEnd(Node* head, Node* next, int data) {
 		return head == NULL ? AssignPrevious(newNode(data),next) : AssignNext(head, insertAtEnd(head->next, head, data));
 	}
+	Node* insertAtFront(Node* head, Node* previous, int data) {
+		//return head == NULL ? AssignNext(newNode(data), previous) : AssignPrevious(head, insertAtFront(head->previous, head, data));
+		if (head == NULL) {
+			Node* temp = newNode(data);
+			temp->next = previous;
+			return temp;
+		}
+		else {
+			head->previous = insertAtFront(head->previous, head, data);
+		}
+	}
 	void display(Node* head) {
 		if (head == NULL) return;
 		else {
@@ -43,10 +54,10 @@ public:
 int main() {
 	Doubly obj;
 	Node* root = NULL;
-	root = obj.insertAtEnd(root, NULL, 55);
-	root = obj.insertAtEnd(root, NULL, 56);
-	root = obj.insertAtEnd(root, NULL, 57);
-	root = obj.insertAtEnd(root, NULL, 58);
+	root = obj.insertAtFront(root, NULL, 55);
+	root = obj.insertAtFront(root, NULL, 56);
+	root = obj.insertAtFront(root, NULL, 57);
+	root = obj.insertAtFront(root, NULL, 58);
 	obj.display(root);
 	system("pause");
 }
