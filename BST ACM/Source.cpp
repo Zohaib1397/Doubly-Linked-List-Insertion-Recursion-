@@ -29,6 +29,9 @@ public:
 		head->next = data;
 		return head;
 	}
+	Node* moveHead(Node* newPos, Node* prePos) {
+		return newPos = prePos;
+	}
 	Node* insertAtEnd(Node* head, Node* next, int data) {
 		return head == NULL ? AssignPrevious(newNode(data),next) : AssignNext(head, insertAtEnd(head->next, head, data));
 	}
@@ -40,8 +43,9 @@ public:
 			return temp;
 		}
 		else {
-			head->previous = insertAtFront(head->previous, head, data);
+			head = head->previous = insertAtFront(head->previous, head, data);
 		}
+		return head;
 	}
 	void display(Node* head) {
 		if (head == NULL) return;
