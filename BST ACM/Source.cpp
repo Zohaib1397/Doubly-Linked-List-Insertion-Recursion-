@@ -66,8 +66,10 @@ public:
 					current->next = temp;
 				}
 			}
-			
 		}
+	}
+	void swapNodes(Node* f, Node* s) {
+		
 	}
 	void display(Node* head) {
 		if (head == NULL) return;
