@@ -21,16 +21,16 @@ public:
 		temp->data = data;
 		return temp;
 	}
-	Node* insertAtEnd(Node* head, Node* next, int data) {
-		if (head == NULL) {
-			Node* temp = newNode(data);
-			temp->previous = next;
-			return temp;
-		}
-		else {
-			head->next = insertAtEnd(head->next, head, data);
-		}
+	Node* AssignPrevious(Node* head, Node* next) {
+		head->previous = next;
 		return head;
+	}
+	Node* AssignNext(Node* head, Node* data) {
+		head->next = data;
+		return head;
+	}
+	Node* insertAtEnd(Node* head, Node* next, int data) {
+		return head == NULL ? AssignPrevious(newNode(data),next) : AssignNext(head, insertAtEnd(head->next, head, data));
 	}
 	void display(Node* head) {
 		if (head == NULL) return;
